@@ -13,5 +13,5 @@ extern "C" {
         NodeMidiInput::Init(target);
     }
 
-    NODE_MODULE_CONTEXT_AWARE(midi, init)
+    NAN_MODULE_WORKER_ENABLED(midi, init)
 }
