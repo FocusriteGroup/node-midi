@@ -12,5 +12,6 @@ extern "C" {
         NodeMidiOutput::Init(target);
         NodeMidiInput::Init(target);
     }
-    NODE_MODULE(midi, init)
+
+    NODE_MODULE_CONTEXT_AWARE(midi, init)
 }
