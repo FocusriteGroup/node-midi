@@ -5,22 +5,23 @@ orbs:
   browser-tools: circleci/browser-tools@1.2.1
 
 defaults: &defaults
-  docker:
-    - image: cimg/node:14.18.2-browsers
-  executor:
-      name: node/default
-      tag: '14.18.2'
+  machine:
+      image: ubuntu-2004:202107-02
+      resource_class: medium
 
 jobs:
   node-tests:
     <<: *defaults
     steps:
       - run:
-          name: install package dependencies
+          name: install OS dependencies
           command: |
             sudo apt-get update -q
             sudo apt-get install -q -y libasound2-dev
       - checkout
+      - run:
+          name: install submodules
+          command: git submodule init && git submodule update
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}-asd
       - run:
@@ -30,9 +31,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      # - run:
-      #     name: run tests
-      #     command: npm test
+      - run:
+          name: run tests
+          command: npm test
       - persist_to_workspace:
           root: ~/
           paths:
