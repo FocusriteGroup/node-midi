@@ -30,9 +30,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: run tests
-          command: npm test
+      # - run:
+      #     name: run tests
+      #     command: npm test
       - persist_to_workspace:
           root: ~/
           paths:
