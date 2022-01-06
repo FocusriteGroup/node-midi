@@ -1,0 +1,72 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1.0
+  browser-tools: circleci/browser-tools@1.2.1
+
+defaults: &defaults
+  machine:
+      image: ubuntu-2004:202107-02
+      resource_class: medium
+
+jobs:
+  node-tests:
+    <<: *defaults
+    steps:
+      - run:
+          name: install OS dependencies
+          command: |
+            sudo apt-get update -q
+            sudo apt-get install -q -y libasound2-dev
+      - checkout
+      - run:
+          name: install submodules
+          command: git submodule init && git submodule update
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}-asd
+      - run:
+          name: Install node modules
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: run tests
+          command: npm test
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project
+
+  publish:
+    docker:
+      - image: node:14-alpine
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Publish
+          command: npm publish
+
+workflows:
+  version: 2
+  test_and_publish:
+    jobs:
+      - node-tests:
+          filters:
+            tags:
+              only:
+                - /.*/
+      - publish:
+          context:
+            - NPM-CONFIG
+          requires:
+            - node-tests
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - /^v.*/
