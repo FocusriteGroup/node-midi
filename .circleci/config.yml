@@ -56,8 +56,8 @@ workflows:
       - publish:
           context:
             - NPM-CONFIG
-          requires:
-            - node-tests
+          # requires:
+          #   - node-tests
           filters:
             branches:
               ignore:
