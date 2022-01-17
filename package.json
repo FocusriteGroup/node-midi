@@ -1,6 +1,6 @@
 {
-  "name": "@Focusrite-Novation/midi",
-  "version": "1.0.0-context-aware.3",
+  "name": "@focusrite-novation/midi",
+  "version": "1.0.0-context-aware.4",
   "scripts": {
     "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js"
   },
