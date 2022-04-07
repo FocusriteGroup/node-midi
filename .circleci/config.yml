@@ -17,7 +17,7 @@ jobs:
           name: install OS dependencies
           command: |
             sudo apt-get update -q
-            sudo apt-get install -q -y libasound2-dev
+            sudo apt-get install -q -y libasound2-dev libasound2-plugins alsa-utils libasound2-doc
       - checkout
       - run:
           name: install submodules
