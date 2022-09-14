@@ -11,4 +11,4 @@ NAN_MODULE_INIT(InitAll) {
     NodeMidiInput::Init(target);
 }
 
-NODE_MODULE(midi, InitAll)
+NODE_MODULE_CONTEXT_AWARE(midi, InitAll)
