@@ -6,8 +6,8 @@ orbs:
 
 defaults: &defaults
   machine:
-    image: ubuntu-2004:202107-02
-    resource_class: medium
+    image: default
+  resource_class: medium
 
 jobs:
   node-tests:
