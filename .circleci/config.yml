@@ -60,7 +60,7 @@ workflows:
                 - /.*/
       - publish:
           context:
-            - NPM-CONFIG
+            - NPM-CONFIG-FN
           requires:
             - node-tests
           filters:
@@ -70,3 +70,4 @@ workflows:
             tags:
               only:
                 - /^v.*/
+# VS Code Extension Version: 1.5.1
