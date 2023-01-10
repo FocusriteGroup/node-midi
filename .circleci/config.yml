@@ -60,7 +60,7 @@ workflows:
                 - /.*/
       - publish:
           context:
-            - NPM-CONFIG
+            - NPM-CONFIG-FN
           requires:
             - node-tests
           filters:
