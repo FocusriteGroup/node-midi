@@ -70,4 +70,3 @@ workflows:
             tags:
               only:
                 - /^v.*/
-# VS Code Extension Version: 1.5.1
