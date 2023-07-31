@@ -37,11 +37,11 @@
     "node": ">=10"
   },
   "dependencies": {
-    "bindings": "~1.5.0",
     "nan": "^2.17.0"
   },
   "devDependencies": {
-    "mocha": "^9.0.0",
+    "cmake-js": "^7.2.1",
+    "mocha": "^10.2.0",
     "should": "^13.2.3"
   },
   "repository": {
@@ -50,7 +50,6 @@
   },
   "files": [
     "midi.js",
-    "binding.gyp",
     "src/",
     "test/",
     "vendor/"
