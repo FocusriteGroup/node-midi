@@ -53,6 +53,7 @@
     "midi.js",
     "src/",
     "test/",
-    "vendor/"
+    "vendor/",
+    "CMakeLists.txt"
   ]
 }
