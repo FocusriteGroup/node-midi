@@ -2,7 +2,8 @@
   "name": "@focusrite-novation/midi",
   "version": "2.2.0",
   "scripts": {
-    "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js"
+    "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js",
+    "install": "cmake-js compile"
   },
   "main": "midi.js",
   "description": "MIDI hardware IO",
