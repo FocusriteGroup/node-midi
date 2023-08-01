@@ -10,21 +10,22 @@ add_library(
   src/midi.cpp
   ${CMAKE_JS_SRC}
 )
-#target_compile_definitions(${PROJECT_NAME} PUBLIC -DNAPI_VERSION=7)
-#include(cmake/CPM.cmake)
+include(cmake/CPM.cmake)
+
+cpmaddpackage ("gh:justinlatimer/rtmidi#c01a721")
 
 # Gives our library file a .node extension without any "lib" prefix
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
 #target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/node_modules/node-addon-api")
 
-target_include_directories(${PROJECT_NAME} PRIVATE vendor/rtmidi)
+#target_include_directories(${PROJECT_NAME} PRIVATE vendor/rtmidi)
 # Essential include files to build a node addon,
 # You should add this line in every CMake.js based project
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_JS_INC})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
-add_subdirectory(vendor/rtmidi)
+#add_subdirectory(vendor/rtmidi)
 # Essential library files to link to a node addon
 # You should add this line in every CMake.js based project
 

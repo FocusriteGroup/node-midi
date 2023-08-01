@@ -1,4 +1,4 @@
-var midi = require('./build/Release/midi.node');
+var midi = require('./build/Release/midi');
 var Stream = require('stream');
 
 // MIDI input inherits from EventEmitter
