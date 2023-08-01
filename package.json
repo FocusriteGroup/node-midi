@@ -3,7 +3,8 @@
   "version": "2.2.0",
   "scripts": {
     "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js",
-    "install": "cmake-js compile"
+    "install": "cmake-js compile",
+    "rebuild": "cmake-js rebuild"
   },
   "main": "midi.js",
   "description": "MIDI hardware IO",
