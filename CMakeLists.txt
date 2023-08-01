@@ -12,7 +12,14 @@ add_library(
 )
 include(cmake/CPM.cmake)
 
-cpmaddpackage ("gh:justinlatimer/rtmidi#c01a721")
+#cpmaddpackage (NAME rtmidi "gh:justinlatimer/rtmidi#c01a721" OPTIONS "BUILD_SHARED_LIBS OFF")
+CPMAddPackage(
+  NAME rtmidi
+  GIT_TAG c01a721
+  GITHUB_REPOSITORY justinlatimer/rtmidi
+  OPTIONS
+    "BUILD_SHARED_LIBS OFF"
+)
 
 # Gives our library file a .node extension without any "lib" prefix
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
