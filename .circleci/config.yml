@@ -41,7 +41,7 @@ jobs:
 
   publish:
     docker:
-      - image: node:14-alpine
+      - image: cimg/node:18.16
     steps:
       - attach_workspace:
           at: ~/
