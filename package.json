@@ -1,5 +1,5 @@
 {
-  "name": "@focusrite-novation/midi",
+  "name": "@focusritegroup/midi",
   "version": "2.2.0",
   "scripts": {
     "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js"
@@ -46,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Focusrite-Novation/npm-packages.git"
+    "url": "git+https://github.com/FocusriteGroup/node-midi.git"
   },
   "files": [
     "midi.js",
