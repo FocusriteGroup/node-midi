@@ -1,6 +1,6 @@
 {
   "name": "@focusritegroup/midi",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "scripts": {
     "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js"
   },
