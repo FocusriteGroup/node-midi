@@ -5,6 +5,7 @@
     "test": "mocha test/unit/*.js && node test/virtual-loopback-test-automated.js"
   },
   "main": "midi.js",
+  "types": "midi.d.ts",
   "description": "MIDI hardware IO",
   "author": {
     "name": "Justin Latimer",
@@ -34,14 +35,20 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=14.15"
+  },
+  "binary": {
+    "napi_versions": [
+      7
+    ]
   },
   "dependencies": {
-    "bindings": "~1.5.0",
-    "nan": "^2.17.0"
+    "node-addon-api": "^6.1.0",
+    "pkg-prebuilds": "^0.2.1"
   },
   "devDependencies": {
-    "mocha": "^9.0.0",
+    "mocha": "^10.2.0",
+    "node-gyp": "^10.0.1",
     "should": "^13.2.3"
   },
   "repository": {
@@ -50,9 +57,12 @@
   },
   "files": [
     "midi.js",
+    "midi.d.ts",
     "binding.gyp",
+    "binding-options.js",
     "src/",
-    "test/",
-    "vendor/"
+    "vendor/rtmidi/RtMidi.cpp",
+    "vendor/rtmidi/RtMidi.h",
+    "prebuilds/"
   ]
 }

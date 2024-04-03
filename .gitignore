@@ -5,3 +5,5 @@ node_modules/
 .vs/
 bin/
 .tool-versions
+prebuilds/
+.yarn/
