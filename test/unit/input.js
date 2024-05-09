@@ -48,6 +48,38 @@ describe('midi.Input', function() {
     });
   });
 
+  describe('.setBufferSize', function() {
+    it('requires at least one argument', function() {
+      (function() {
+        input.setBufferSize();
+      }).should.throw('Arguments must be integers');
+    });
+
+    it('requires an integer for the first argument', function() {
+      (function() {
+        input.setBufferSize('asdf');
+      }).should.throw('Arguments must be integers');
+    });
+
+    it('requires an integer for the second argument', function() {
+      (function() {
+        input.setBufferSize(1024, 'asdf');
+      }).should.throw('Arguments must be integers');
+    });
+
+    it('does not throw when setting the size and count', function() {
+      (function() {
+        input.setBufferSize(1024, 8)
+      }).should.not.throw();
+    });
+
+    it('does not throw when setting the size only', function() {
+      (function() {
+        input.setBufferSize(1024)
+      }).should.not.throw();
+    });
+  });
+
 
   describe('.openPort', function() {
     it('requires an argument', function() {

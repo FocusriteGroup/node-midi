@@ -13,6 +13,8 @@ std::unique_ptr<Napi::FunctionReference> NodeMidiInput::Init(const Napi::Env &en
     Napi::HandleScope scope(env);
 
     Napi::Function func = DefineClass(env, "NodeMidiInput", {
+                                                                InstanceMethod<&NodeMidiInput::SetBufferSize>("setBufferSize", static_cast<napi_property_attributes>(napi_writable | napi_configurable)),
+
                                                                 InstanceMethod<&NodeMidiInput::GetPortCount>("getPortCount", static_cast<napi_property_attributes>(napi_writable | napi_configurable)),
                                                                 InstanceMethod<&NodeMidiInput::GetPortName>("getPortName", static_cast<napi_property_attributes>(napi_writable | napi_configurable)),
 
@@ -137,6 +139,39 @@ void NodeMidiInput::CallbackJs(Napi::Env env, Napi::Function callback, NodeMidiI
         // We're finished with the data.
         delete data;
     }
+}
+
+Napi::Value NodeMidiInput::SetBufferSize(const Napi::CallbackInfo &info)
+{
+    Napi::Env env = info.Env();
+    Napi::HandleScope scope(env);
+
+    if (!handle)
+    {
+        Napi::Error::New(env, "RtMidi not initialised").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    if (info.Length() != 2 || !info[0].IsNumber() || !info[1].IsNumber())
+    {
+        Napi::TypeError::New(env, "Arguments must be integers").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+
+    unsigned int size = info[0].ToNumber();
+    unsigned int count = info[1].ToNumber();
+
+    try
+    {
+        handle->setBufferSize(size, count);
+    }
+    catch (RtMidiError &e)
+    {
+        handle.reset();
+        Napi::Error::New(info.Env(), "Failed to set buffer size").ThrowAsJavaScriptException();
+    }
+
+    return env.Null();
 }
 
 Napi::Value NodeMidiInput::GetPortCount(const Napi::CallbackInfo &info)

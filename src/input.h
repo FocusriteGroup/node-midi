@@ -47,6 +47,7 @@ public:
     Napi::Value IsPortOpen(const Napi::CallbackInfo &info);
 
     Napi::Value IgnoreTypes(const Napi::CallbackInfo &info);
+    Napi::Value SetBufferSize(const Napi::CallbackInfo &info);
 };
 
 #endif // NODE_MIDI_INPUT_H

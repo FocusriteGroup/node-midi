@@ -40,6 +40,9 @@ class Input extends EventEmitter {
   openVirtualPort(port) {
     return this.input.openVirtualPort(port)
   }
+  setBufferSize(size, count = 4) {
+    return this.input.setBufferSize(size, count)
+  }
 }
 
 class Output {
