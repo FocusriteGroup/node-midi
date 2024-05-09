@@ -45,7 +45,7 @@ NodeMidiInput::NodeMidiInput(const Napi::CallbackInfo &info) : Napi::ObjectWrap<
     {
         handle.reset(new RtMidiIn());
 
-        handle->setBufferSize(16384, 4);
+        handle->setBufferSize(2048, 4);
     }
     catch (RtMidiError &e)
     {
